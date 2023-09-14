@@ -40,6 +40,8 @@ fetch('data.json')
 
 
             </div>
+           {/* floting-cart */}
+
            
         </div>
     );
