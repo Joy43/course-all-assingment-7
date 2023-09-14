@@ -19,4 +19,4 @@ createApp(App).use(DaisyUI, {
   themes: {
     // Your theme configuration
   },
-}).mount('#app');
+}).mount('#app');git 

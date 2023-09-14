@@ -1,16 +1,16 @@
 .cart{
-    width: 300px;
+    width: 320px;
     border-radius: 16px;
     gap: 10px;
     height: 350px;
     border: 3px solid gray;
-    color: rgb(163, 25, 181);
+    
 }
- .card-container{
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+body{
+    background: #F3F3F3;
+}
+ .cart-container{
+  width: 90%;
 }
 .button-select{
     background-color: aqua;
