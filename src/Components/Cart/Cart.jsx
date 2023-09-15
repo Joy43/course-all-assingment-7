@@ -6,15 +6,35 @@ const Cart = ({selectedCourse}) => {
     console.log(selectedCourse);
     return (
         
-        <div>
-            <h1> Total course:{selectedCourse.length}</h1>
+        <div className="grid" >
+<h1 className="text-lg font-bold">Credit Hour Remaining </h1>
+<hr />
+            <div>
+                <h1 className="text-lg font-bold" >course Name</h1>
+            <div>
+            <h1 className="text-lg font-bold" > Total course:{selectedCourse.length}</h1>
           {
 selectedCourse.map((course)=>(
-    <ul>
+    <ol>
         <li key={course.id}>{course.title}</li>
-    </ul>
+    </ol>
 ))
           }
+
+        </div>
+        <hr />
+
+<div>
+  <h1 className="text-lg font-bold" >  Total Credit Hour: h </h1>
+</div>
+
+<div>
+    <h1>
+        <h1 className= "text-lg font-bold">Total Price: usd</h1>
+    </h1>
+</div>
+            </div>
+
 
         </div>
         

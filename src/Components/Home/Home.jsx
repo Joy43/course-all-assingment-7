@@ -5,6 +5,9 @@ import './Home.css'
 import { useEffect } from 'react';
 
 import Cart from '../Cart/Cart';
+// import swal from 'sweetalert';
+import Swal from 'sweetalert2'
+
 
 const Home = () => {
     const [allCourse,setAllCourse]=useState([]);
@@ -17,9 +20,18 @@ fetch('data.json')
 .then(res=>res.json())
 .then(data=>setAllCourse(data))
     },[])
-
+// exit select iteam
   const handleSelectCourse=(course)=>{
-    setSelectedCourse([...selectedCourse,course]) 
+    const isExit=selectedCourse.find((items)=> items.id===course.id);
+   if(isExit){ 
+     return Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Are you selected the same course!',
+      footer: '<a href="">Please select another course </a>'
+    })
+    }
+   else{setSelectedCourse([...selectedCourse,course]) }
   }
   
   
@@ -34,7 +46,7 @@ selectedCourse.forEach(()=>{
          {allCourse.map(course=>(
             
                <div key={course.id} className="cart items-center bg-white gap-4">
-               <img src={course.image} alt="" />
+               <img className='w-full' src={course.image} alt="" />
                <div>
                <h1 className='text-lg font-bold'>{course.title}</h1>
                <p>{course.details}</p>
@@ -50,7 +62,7 @@ selectedCourse.forEach(()=>{
 {/* button */}
 
 <div>
-<button onClick={()=>handleSelectCourse(course)} 
+<button onClick={()=>handleSelectCourse (course)} 
           className='button-select'>Select</button>
 </div>
            </div>
