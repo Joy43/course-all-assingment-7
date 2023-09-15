@@ -13,7 +13,7 @@ const Home = () => {
     const [allCourse,setAllCourse]=useState([]);
     const [selectedCourse,setSelectedCourse]=useState([]);
     const [reminingHour,setRemainingHour]=useState(0);
-    const{totalcost,setTotalCost}=useState(0);
+    const[totalCost,setTotalCost]=useState(0);
 
 // console.log(allCourse);
 
@@ -39,17 +39,19 @@ fetch('data.json')
    else{
     selectedCourse.forEach((item)=>{
   countCredit=countCredit+item.credit;
+ 
     });
     // console.log(countCredit);
-   
-    const totalRemainingCredit=14-countCredit;
+    
+    const totalRemainingCredit=20-countCredit;
+    
 setTotalCost(countCredit);
 setRemainingHour(totalRemainingCredit);
     setSelectedCourse([...selectedCourse,course]) }
   }
   
   const count = selectedCourse.reduce((total, course) => total + course.price, 0);
-
+  
 
     return (
         <div className='container  flex gap-4 '>
@@ -86,7 +88,8 @@ setRemainingHour(totalRemainingCredit);
             </div>
            {/* floting-cart */}
 <div className='bg-white p-2 mr-3'>
-<Cart selectedCourse={selectedCourse} count={count} reminingHour={reminingHour} totalcost={totalcost} > </Cart>
+<Cart selectedCourse={selectedCourse} count={count} reminingHour={reminingHour}
+ totalCost={totalCost} > </Cart>
 </div>
 
         </div>
