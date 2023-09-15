@@ -41,13 +41,33 @@ fetch('data.json')
   countCredit=countCredit+item.credit;
  
     });
-    // console.log(countCredit);
+  // ==================reaming hour===========
     
     const totalRemainingCredit=20-countCredit;
-    
+    setRemainingHour(totalRemainingCredit);
 setTotalCost(countCredit);
-setRemainingHour(totalRemainingCredit);
-    setSelectedCourse([...selectedCourse,course]) }
+if(countCredit >=20){
+  return Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'your are cross the limit (20credit)!',
+    footer: '<a href="">stop slected cross </a>'
+  })
+  
+}else{
+  setSelectedCourse([...selectedCourse,course]) }
+
+if (totalRemainingCredit<0){
+  return Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Negative value do not supported!',
+    footer: '<a href="">Please stop selected  course </a>'
+  })
+}else{
+  setSelectedCourse([...selectedCourse,course]) }
+}
+   
   }
   
   const count = selectedCourse.reduce((total, course) => total + course.price, 0);
