@@ -11,7 +11,9 @@ import Swal from 'sweetalert2'
 
 const Home = () => {
     const [allCourse,setAllCourse]=useState([]);
-    const [selectedCourse,setSelectedCourse]=useState([])
+    const [selectedCourse,setSelectedCourse]=useState([]);
+    const [reminingHour,setRemainingHour]=useState(0);
+    const{totalcost,setTotalCost}=useState(0);
 
 // console.log(allCourse);
 
@@ -23,7 +25,10 @@ fetch('data.json')
 // exit select iteam
   const handleSelectCourse=(course)=>{
     const isExit=selectedCourse.find((items)=> items.id===course.id);
+    // let count=course.price;
+    let countCredit=course.credit
    if(isExit){ 
+    
      return Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -31,13 +36,20 @@ fetch('data.json')
       footer: '<a href="">Please select another course </a>'
     })
     }
-   else{setSelectedCourse([...selectedCourse,course]) }
+   else{
+    selectedCourse.forEach((item)=>{
+  countCredit=countCredit+item.credit;
+    });
+    // console.log(countCredit);
+   
+    const totalRemainingCredit=14-countCredit;
+setTotalCost(countCredit);
+setRemainingHour(totalRemainingCredit);
+    setSelectedCourse([...selectedCourse,course]) }
   }
   
-  
-selectedCourse.forEach(()=>{
-  
-})
+  const count = selectedCourse.reduce((total, course) => total + course.price, 0);
+
 
     return (
         <div className='container  flex gap-4 '>
@@ -45,7 +57,7 @@ selectedCourse.forEach(()=>{
                 {/* card */}
          {allCourse.map(course=>(
             
-               <div key={course.id} className="cart items-center bg-white gap-4">
+               <div key={course.id} className="cart p-2 items-center bg-white gap-4">
                <img className='w-full' src={course.image} alt="" />
                <div>
                <h1 className='text-lg font-bold'>{course.title}</h1>
@@ -73,8 +85,8 @@ selectedCourse.forEach(()=>{
 
             </div>
            {/* floting-cart */}
-<div>
-<Cart selectedCourse={selectedCourse}> </Cart>
+<div className='bg-white p-2 mr-3'>
+<Cart selectedCourse={selectedCourse} count={count} reminingHour={reminingHour} totalcost={totalcost} > </Cart>
 </div>
 
         </div>

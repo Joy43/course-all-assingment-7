@@ -2,27 +2,29 @@
 /* eslint-disable react/prop-types */
 
 
-const Cart = ({selectedCourse}) => {
-    console.log(selectedCourse);
+const Cart = ({selectedCourse,count,reminingHour}) => {
+    console.log(reminingHour);
     return (
         
         <div className="grid" >
-<h1 className="text-lg font-bold">Credit Hour Remaining </h1>
+<h1 className="text-lg font-bold">Credit Hour Remaining{reminingHour} </h1>
 <hr />
             <div>
                 <h1 className="text-lg font-bold" >course Name</h1>
             <div>
             <h1 className="text-lg font-bold" > Total course:{selectedCourse.length}</h1>
-          {
-selectedCourse.map((course)=>(
-    <ol>
-        <li key={course.id}>{course.title}</li>
-    </ol>
-))
-          }
+
+         <div>
+         
+
+  {selectedCourse.map((course) => (
+  <ol type="1">  <li key={course.id}>{course.title}</li></ol>
+  ))}
+
+ </div>
 
         </div>
-        <hr />
+        <hr/>
 
 <div>
   <h1 className="text-lg font-bold" >  Total Credit Hour: h </h1>
@@ -30,7 +32,7 @@ selectedCourse.map((course)=>(
 
 <div>
     <h1>
-        <h1 className= "text-lg font-bold">Total Price: usd</h1>
+        <h1 className= "text-lg font-bold">Total Price:{count} usd</h1>
     </h1>
 </div>
             </div>
