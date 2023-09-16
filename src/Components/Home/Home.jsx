@@ -44,8 +44,8 @@ fetch('data.json')
   // ==================reaming hour===========
     
     const totalRemainingCredit=20-countCredit;
-    setRemainingHour(totalRemainingCredit);
-setTotalCost(countCredit);
+    
+
 if(countCredit >=20){
   return Swal.fire({
     icon: 'error',
@@ -54,18 +54,20 @@ if(countCredit >=20){
     footer: '<a href="">stop slected cross </a>'
   })
   
-}else{
-  setSelectedCourse([...selectedCourse,course]) }
+}
+setTotalCost(countCredit);
 
-if (totalRemainingCredit<0){
+ if (totalRemainingCredit<0){
   return Swal.fire({
     icon: 'error',
     title: 'Oops...',
     text: 'Negative value do not supported!',
     footer: '<a href="">Please stop selected  course </a>'
   })
+  
 }else{
   setSelectedCourse([...selectedCourse,course]) }
+  setRemainingHour(totalRemainingCredit);
 }
    
   }

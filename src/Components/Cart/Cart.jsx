@@ -17,9 +17,11 @@ const Cart = ({selectedCourse,count,reminingHour,totalCost}) => {
          <div className="p-4 m-4 rounded-lg bg-slate-400 text-white">
          
 
-  {selectedCourse.map((course) => (
-  <ol className="list-decimal list-inside "  >  <li key={course.id}>{course.title}</li></ol>
-  ))}
+         <ol className="list-decimal p-2">
+    {selectedCourse.map((course) => (
+      <li key={course.id}>{course.title}</li>
+    ))}
+  </ol>
 
  </div>
 
